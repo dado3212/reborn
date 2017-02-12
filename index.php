@@ -1,0 +1,13 @@
+<?php
+
+?>
+<html>
+  <head>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="assets/main.js" ></script>
+    <link type="text/css" rel="stylesheet" href="assets/main.css">
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+  </body>
+</html>
