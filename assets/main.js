@@ -240,7 +240,6 @@ $(document).ready(function() {
       
     requestAnimationFrame(update);
   }
-
   document.body.addEventListener("keydown", function(e) {
       keys[e.keyCode] = true;
   });
@@ -260,6 +259,8 @@ $(document).ready(function() {
   var t = 0;
   var win = new Win(200, 150, 20, 20);
   var startTime = performance.now();
+
+  keys[38] = true;
 
   lives = [new Life(width/2, height - 15, 30, 30, 9)];
 

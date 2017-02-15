@@ -50,22 +50,22 @@ World.add(engine.world, [
 
 //add the player
 var player = Bodies.rectangle(600, 520, 25, 25, {
-  density: 0.1,
-  friction: 0.6,
+  density: 0.05,
+  friction: 5,
   frictionStatic: 0.2,
-  frictionAir: 0.15,
+  frictionAir: 0,
   restitution: 0,
   ground: false,
   inertia: Infinity,
 });
 
-engine.world.gravity.y = 7;
+engine.world.gravity.y = 3.3;
 engine.world.bounds = Matter.Bounds.create([{ x: 5, y: 5 }, { x: 795, y: 595 }])
 
-var jump = 10;
-var maxSpeed = 100;
-var ground_acceleration = 1;
-var air_acceleration = 0.4;
+var jump = 1.9;
+var maxSpeed = 4;
+var ground_acceleration = 0.35;
+var air_acceleration = 0.35;
 
 // Add the player to the world
 World.add(engine.world, player);
@@ -121,13 +121,14 @@ Events.on(engine, "beforeTick", function(event) {
     y: 0,
   }
 
+  // Jumping
   if (keys[38] && player.ground) {
     total_force.y = -jump;
   }
-  //spin left and right
-  if (keys[37] && player.speed < maxSpeed) {
+  // Moving left and right
+  if (keys[37] && Math.abs(player.velocity.x) < maxSpeed) {
     total_force.x -= (player.ground ? ground_acceleration : air_acceleration);
-  } else if (keys[39] && player.speed < maxSpeed) {
+  } else if (keys[39] && Math.abs(player.velocity.x) < maxSpeed) {
     total_force.x += (player.ground ? ground_acceleration : air_acceleration);
   }
   player.force = total_force;
