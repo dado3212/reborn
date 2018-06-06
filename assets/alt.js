@@ -187,7 +187,7 @@ Events.on(engine, 'beforeTick', function(event) {
     lives[0].moveList[ticks] = playerActions;
   }
 
-  console.log(lives[0].velocity);
+  // console.log(lives[0].velocity);
 
   // Process stored moves
   for (var i = lives.length - 1; i >=0; i--) {
